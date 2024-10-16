@@ -9,7 +9,6 @@ Color generateRandomColor() {
     Colors.green.shade100,
     Colors.orange.shade100,
     Colors.purple.shade100,
-    Colors.yellow.shade100,
   ];
 
   return colors[Random().nextInt(colors.length)];

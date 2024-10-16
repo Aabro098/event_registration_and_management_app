@@ -21,29 +21,6 @@ class EventCard extends StatelessWidget {
             color: generateRandomColor(), 
           ),
         ),
-        
-        Positioned(
-          top: 10,
-          right: 10,
-          child: GestureDetector(
-            child: const Icon(
-              Icons.favorite,
-              color: Colors.red,
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: 20,
-          right: 10,
-          child: Text(
-            '${event.date}, ${event.time}',
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.normal
-            ),
-          )
-        ),
 
         Align(
           alignment: Alignment.center, 
@@ -73,17 +50,29 @@ class EventCard extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.transparent, Colors.black.withOpacity(0.1)],
+                colors: [Colors.transparent, Colors.black.withOpacity(0.4)],
               ),
             ),
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              event.title,  
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              children: [
+                Text(
+                  event.title,  
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '${event.date}, ${event.time}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.normal
+                  ),
+                )
+              ],
             ),
           ),
         ),

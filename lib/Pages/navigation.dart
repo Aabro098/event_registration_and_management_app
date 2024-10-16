@@ -16,7 +16,7 @@ class NavScreen extends StatefulWidget {
 }
 
 class _NavScreenState extends State<NavScreen> {
-  int selectedIndex = 0; 
+  int selectedIndex = 1; 
 
   final List<Widget> _screens = [
     const RegistrationPage(),

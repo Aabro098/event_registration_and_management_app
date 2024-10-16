@@ -21,6 +21,27 @@ class EventListScreen extends StatelessWidget {
       description:
           'A hands-on workshop covering Flutter app development for beginners and intermediates.',
     ),
+    Event(
+      title: 'AI Summit 2024',
+      date: 'May 5, 2024',
+      time: '9:00 AM',
+      description:
+          'An annual summit discussing the latest trends and breakthroughs in artificial intelligence and machine learning.',
+    ),
+    Event(
+      title: 'Startup Pitch Night',
+      date: 'June 15, 2024',
+      time: '6:00 PM',
+      description:
+          'An exciting night where startups pitch their innovative ideas to investors and industry experts.',
+    ),
+    Event(
+      title: 'Design Thinking Workshop',
+      date: 'July 28, 2024',
+      time: '11:00 AM',
+      description:
+          'A creative workshop that introduces participants to the principles of design thinking and problem-solving strategies.',
+    ),
   ];
 
   @override
@@ -38,7 +59,13 @@ class EventListScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+        padding: const EdgeInsets.all(10),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
         itemCount: events.length,  
         itemBuilder: (context, index) {
           final event = events[index];
