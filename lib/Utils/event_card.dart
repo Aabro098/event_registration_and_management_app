@@ -2,7 +2,7 @@ import 'package:event_registration_and_management_app/Utils/elevated_button.dart
 import 'package:event_registration_and_management_app/Utils/get_random_color.dart';
 import 'package:flutter/material.dart';
 
-import '../Services/event_services.dart';
+import '../Models/event_models.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;

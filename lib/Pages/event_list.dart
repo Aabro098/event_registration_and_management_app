@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Services/event_services.dart';
+import '../Models/event_models.dart';
 import '../Utils/event_card.dart';
 
 class EventListScreen extends StatelessWidget {
