@@ -63,8 +63,8 @@ class EventListScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
         ),
         itemCount: events.length,  
         itemBuilder: (context, index) {

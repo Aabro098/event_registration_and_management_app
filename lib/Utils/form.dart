@@ -8,7 +8,8 @@ class AppForm extends StatefulWidget {
   const AppForm({
     super.key,
     required this.controller,
-    required this.hintText,
+    required this.hintText, 
+    required String? Function(dynamic value) validator,
   });
 
   @override
@@ -43,12 +44,6 @@ class _AppFormState extends State<AppForm> {
           ),
         ),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Enter ${widget.hintText}';
-        }
-        return null;
-      },
     );
   }
 }

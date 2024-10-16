@@ -4,11 +4,15 @@ class AppElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final Color color;
+  final int? size;
+  final int? textSize;
   const AppElevatedButton({
     super.key, 
     required this.text, 
     required this.onTap, 
-    required this.color
+    required this.color,
+    this.size, 
+    this.textSize
   });
 
   @override
@@ -19,14 +23,14 @@ class AppElevatedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
         ),
-        minimumSize: const Size(double.infinity ,  32),
+        minimumSize: Size(double.infinity, size != null ? size!.toDouble() : 32),
         backgroundColor: color,
         foregroundColor: Colors.white,
       ),
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 22,
+        style: TextStyle(
+          fontSize: textSize != null ? textSize!.toDouble() : 22.0,
           fontWeight: FontWeight.normal
         ),
       )

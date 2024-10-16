@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../Utils/elevated_button.dart';
 import '../Utils/form.dart';
+import 'confirmation_page.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -21,7 +21,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String? _selectedType;
   final TextEditingController _commentsController = TextEditingController();
 
-  // Available types for the dropdown
   final List<String> eventTypes = [
     'Conference',
     'Workshop',
@@ -68,17 +67,41 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   const SizedBox(height: 10.0),
                   AppForm(
                     controller: _nameController,
-                    hintText: 'Full Name',
+                    hintText: 'Full Name', validator: (value) { 
+                      if (value == null || value.isEmpty) {
+                          return 'Please Enter Name';
+                        }
+                        return null;
+                     },
                   ),
                   const SizedBox(height: 10.0),
                   AppForm(
                     controller: _emailController,
                     hintText: 'Email',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                      if (!emailRegex.hasMatch(value)) {
+                        return 'Enter a valid email address';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10.0),
                   AppForm(
                     controller: _phoneController,
                     hintText: 'Phone Number',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                        return 'Enter a valid phone number';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10.0),
                   
@@ -88,11 +111,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: AppForm(
                         controller: _dateController,
                         hintText: 'Select Date',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select a date';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  // Dropdown for Type Selection
+
                   DropdownButtonFormField<String>(
                     value: _selectedType,
                     items: eventTypes.map((String type) {
@@ -110,6 +139,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       hintText: 'Select Type',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
+                        borderSide: const BorderSide(
+                          color: Colors.orange,
+                        ),
                       ),
                     ),
                     validator: (value) {
@@ -123,20 +155,40 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   AppForm(
                     controller: _commentsController,
                     hintText: 'Write Comments',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please provide comments';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10.0),
                   isLoading
-                      ? const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.orange),
-                        )
-                      : AppElevatedButton(
-                          text: 'Register',
-                          onTap: () {
-                            
-                          },
-                          color: Colors.orange,
-                        ),
+                    ? const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.orange),
+                      )
+                    : AppElevatedButton(
+                        text: 'Register',
+                        onTap: () {
+                          if (_registerFormKey.currentState?.validate() ?? false) {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ConfirmationPage(),
+                              ),
+                            ).then((_) {
+                              setState(() {
+                                isLoading = false;
+                              });
+                            });
+                          }
+                        },
+                        color: Colors.orange,
+                      ),
                 ],
               ),
             ),
