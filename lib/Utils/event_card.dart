@@ -1,9 +1,14 @@
 import 'package:event_registration_and_management_app/Utils/elevated_button.dart';
+import 'package:event_registration_and_management_app/Utils/get_random_color.dart';
 import 'package:flutter/material.dart';
 
+import '../Services/event_services.dart';
+
 class EventCard extends StatelessWidget {
+  final Event event;
   const EventCard({
-    super.key,
+    super.key, 
+    required this.event,
   });
 
   @override
@@ -13,7 +18,7 @@ class EventCard extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.grey[300], 
+            color: generateRandomColor(), 
           ),
         ),
         
@@ -28,13 +33,25 @@ class EventCard extends StatelessWidget {
           ),
         ),
 
-        const Align(
+        Positioned(
+          top: 20,
+          right: 10,
+          child: Text(
+            '${event.date}, ${event.time}',
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.normal
+            ),
+          )
+        ),
+
+        Align(
           alignment: Alignment.center, 
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              'This is a description of the event. It provides details about the event, the schedule, and other important information.',
-              style: TextStyle(
+              event.description,
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black87,
                 fontWeight: FontWeight.normal,
@@ -60,9 +77,9 @@ class EventCard extends StatelessWidget {
               ),
             ),
             padding: const EdgeInsets.all(8.0),
-            child: const Text(
-              'Event 1',  
-              style: TextStyle(
+            child: Text(
+              event.title,  
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

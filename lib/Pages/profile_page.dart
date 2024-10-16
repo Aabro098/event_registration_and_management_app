@@ -68,10 +68,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const Divider(height: 0.9 , color: Colors.black12),
             const SizedBox(height: 10),
             const _ProfileRow(label: 'Name', value: 'Arbin Shrestha'),
-            const _ProfileRow(label: 'DOB', value: '2002/10/26'),
-            const _ProfileRow(label: 'Address', value: 'Shankhamul,Kathmandu'),
-            const _ProfileRow(label: 'Mobile', value: '+977 9848096245'),
             const _ProfileRow(label: 'Email', value: 'arbinstha71@gmail.com'),
+            const _ProfileRow(label: 'Mobile', value: '+977 9848096245'),
             
             const SizedBox(height: 10),
       

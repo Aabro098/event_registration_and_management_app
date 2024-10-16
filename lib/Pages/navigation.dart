@@ -20,7 +20,7 @@ class _NavScreenState extends State<NavScreen> {
 
   final List<Widget> _screens = [
     const RegistrationPage(),
-    const EventList(),
+    EventListScreen(),
     const ProfileScreen()
   ];
 
