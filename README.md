@@ -73,7 +73,11 @@ Additional Notes:
 The pubspec.yaml includes an assets section. Ensure that the assets (e.g., images) are present in the assets/images/ folder.
 If you face any issues with the emulator or build, make sure the SDK version specified (sdk: ^3.5.3) in the pubspec.yaml is compatible with your Flutter installation by running flutter doctor to check for any configuration issues.
 That's it! Once you complete these steps, your app should be running successfully on your emulator or physical device.
-
+![My Image](./assets/images/profile.jpg)
+![My Image](./assets/images/registration.jpg)
+![My Image](./assets/images/list.jpg)
+![My Image](./assets/images/form_validation.jpg)
+![My Image](./assets/images/confirmation.jpg)
 
 
 
